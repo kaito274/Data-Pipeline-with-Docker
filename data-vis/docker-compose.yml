@@ -12,6 +12,7 @@ services:
       WEATHER_TABLE: weatherreport
       TWITTER_TABLE: twitterdata
       FAKER_TABLE: fakerdata
+      CODEFORCES_TABLE: codeforcesdata
     ports:
         - 8888:8888
     volumes:

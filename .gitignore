@@ -128,3 +128,6 @@ dmypy.json
 
 # openweathermap_service.cfg
 owm-producer/openweathermap_service.cfg
+
+# cassandra/data
+cassandra/data/

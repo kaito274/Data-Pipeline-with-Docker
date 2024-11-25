@@ -29,6 +29,15 @@ services:
       CASSANDRA_HOST: cassandradb
       CASSANDRA_KEYSPACE: kafkapipeline
     command: ["python", "-u","python/faker_consumer.py"]
+  codeforcesconsumer:
+    container_name: codeforcesconsumer
+    image: twitterconsumer
+    environment:
+      KAFKA_BROKER_URL: broker:9092
+      TOPIC_NAME: codeforces
+      CASSANDRA_HOST: cassandradb
+      CASSANDRA_KEYSPACE: kafkapipeline
+    command: ["python", "-u","python/codeforces_consumer.py"]
 
 networks:
   default:

@@ -11,6 +11,7 @@ from cassandra.query import dict_factory
 tablename = os.getenv("weather.table", "weatherreport")
 twittertable = os.getenv("twittertable.table", "twitterdata")
 fakertable = os.getenv("fakertable.table", "fakerdata")
+codeforcestable = os.getenv("codeforcestable.table", "codeforcesdata")
 
 
 CASSANDRA_HOST = os.environ.get("CASSANDRA_HOST") if os.environ.get("CASSANDRA_HOST") else 'localhost'
@@ -19,6 +20,7 @@ CASSANDRA_KEYSPACE = os.environ.get("CASSANDRA_KEYSPACE") if os.environ.get("CAS
 WEATHER_TABLE = os.environ.get("WEATHER_TABLE") if os.environ.get("WEATHER_TABLE") else 'weather'
 TWITTER_TABLE = os.environ.get("TWITTER_TABLE") if os.environ.get("TWITTER_TABLE") else 'twitter'
 FAKER_TABLE = os.environ.get("FAKER_TABLE") if os.environ.get("FAKER_TABLE") else 'faker'
+CODEFORCES_TABLE = os.environ.get("CODEFORCES_TABLE") if os.environ.get("CODEFORCES_TABLE") else 'codeforces'
 
 def saveTwitterDf(dfrecords):
     if isinstance(CASSANDRA_HOST, list):
@@ -88,6 +90,40 @@ def saveFakerDf(dfrecords):
 
     print('Inserted ' + str(totalcount) + ' rows in total')
 
+def saveCodeforcesDf(dfrecords):
+    if isinstance(CASSANDRA_HOST, list):
+        cluster = Cluster(CASSANDRA_HOST)
+    else:
+        cluster = Cluster([CASSANDRA_HOST])
+
+    session = cluster.connect(CASSANDRA_KEYSPACE)
+
+    counter = 0
+    totalcount = 0
+
+    cqlsentence = "INSERT INTO " + codeforcestable + " (handle, rating, rank, max_rating, max_rank, last_online_time, registration_time, contribution, country) \
+                   VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)"
+    batch = BatchStatement(consistency_level=ConsistencyLevel.QUORUM)
+    insert = session.prepare(cqlsentence)
+    batches = []
+    for idx, val in dfrecords.iterrows():
+        batch.add(insert, (val['handle'], val['rating'], val['rank'], val['max_rating']
+                           , val['max_rank'], val['last_online_time'], val['registration_time'],
+                           val['contribution'], val['country']))
+        counter += 1
+        if counter >= 100:
+            print('inserting ' + str(counter) + ' records')
+            totalcount += counter
+            counter = 0
+            batches.append(batch)
+            batch = BatchStatement(consistency_level=ConsistencyLevel.QUORUM)
+    if counter != 0:
+        batches.append(batch)
+        totalcount += counter
+    rs = [session.execute(b, trace=True) for b in batches]
+
+    print('Inserted ' + str(totalcount) + ' rows in total')
+
 def saveWeatherreport(dfrecords):
     if isinstance(CASSANDRA_HOST, list):
         cluster = Cluster(CASSANDRA_HOST)
@@ -138,10 +174,15 @@ def loadDF(targetfile, target):
         dfData['datetime'] = pd.to_datetime(dfData['datetime'])
         saveTwitterDf(dfData)
     elif target == 'faker':
-        colsnames = ['name', 'address', 'year']
+        colsnames = ['ssn', 'name', 'address', 'year', 'city', 'credit_card_number', 'credit_card_provider', 'email', 'country', 'phone_number']
         dfData = pd.read_csv(targetfile, header=None,
                              parse_dates=True, names=colsnames)
         saveFakerDf(dfData)
+    elif target == 'codeforces':
+        colsnames = ['handle', 'rating', 'rank', 'max_rating', 'max_rank', 'last_online_time', 'registration_time', 'contribution', 'country']
+        dfData = pd.read_csv(targetfile, header=None,
+                             parse_dates=True, names=colsnames)
+        saveCodeforcesDf(dfData)
 
 
 def getWeatherDF():
@@ -151,6 +192,8 @@ def getTwitterDF():
 def getFakerDF():
     print(FAKER_TABLE)
     return getDF(FAKER_TABLE)
+def getCodeforcesDF():
+    return getDF(CODEFORCES_TABLE) 
 
 def getDF(source_table):
     if isinstance(CASSANDRA_HOST, list):
@@ -158,7 +201,7 @@ def getDF(source_table):
     else:
         cluster = Cluster([CASSANDRA_HOST])
 
-    if source_table not in (WEATHER_TABLE, TWITTER_TABLE, FAKER_TABLE):
+    if source_table not in (WEATHER_TABLE, TWITTER_TABLE, FAKER_TABLE, CODEFORCES_TABLE):
         return None
 
     session = cluster.connect(CASSANDRA_KEYSPACE)
