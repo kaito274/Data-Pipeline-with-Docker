@@ -110,7 +110,7 @@ Below are some examples of the weather, faker and codeforces data:
 ![image](https://github.com/user-attachments/assets/a626a572-bc9e-4c20-8b94-165eb4499214)
 
 ### Plot
-In this section, we will use **weather** and **codeforces** data for visualzations.
+In this section, we will use **weather** and **codeforces** data for visualizations.
 
 ### Weather Data
 
@@ -144,6 +144,29 @@ Beyond the rating **2000**, there is a common trend that when the ratings increa
 The above graph illusatrate the distribution of the ranks among Codeforces users. 
 Most of the users fall within the `newbie` rank, observing over 3000 particicipants. Moving to higher ranks, the number of users with corresponding ranks descrease significantly. In details, following `newbie`, the next 3 most common ranks are `pupil`, `specialist` and `expert`, achieving apporximately 600, 400 and 300, respectively. In higher ranks (`candidate master`, `master` and beyond), only a small fraction of users meet these requirements, which is less than 100. 
 
-## Practical Implication of the Project (10pts) 
+## Practical Implication of the Project 
 Reflect on the practical value of your project, including description of the user case and 
 scenario, and how your approach can help solve the problem described in the scenario. 
+
+**1. Weather Forecast** 
+
+The OpenWeatherMap API is useful for knowing the information of weather forecast. Some of the use cases:
+- A travel agency can rely on the weather forecast to provide the best travel advice to their customers.
+- Organizations hosting outdoor activites such as trekking or cycling events might need the weather forecast to make the detailed plans.
+  
+As a result, by using the OpenWeatherMap API, the organization or individuals can determine the weather conditions, which will help them make better decisions, give their customers better services, and improve event logistics.
+
+**2. Faker Data** 
+
+The Faker API is useful for generating mock data for testing and development purposes. Some of the use cases:
+- Software testers can employ the Faker API to generate fake data to test their applications.
+- Data scientists or AI engineers can generate fake data using the Faker API to train their AI/machine learning models.
+  
+As a result, by utilizing the Faker API, users can simulate a large number of data without relying on real data, thus ensure the system is tested thoroughly while maintaining data privacy and security during development as well as robust and efficient trained models.
+
+**3. Codeforces Data** 
+
+Data from the Codeforces platform can be accessed with the help of the Codeforces API. Some of the use cases:
+- Competitive programmers can use the Codeforces API to access contest information, user rating, ranks, and problem information.
+  
+Therefore, by using the Codeforces API, individuals can customize their training process and focus on their weak areas to improve their competitive programming skills.
