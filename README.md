@@ -103,7 +103,7 @@ codeforces = getCodeforcesDF() # Get the codeforces data
 
 Below are some examples of the weather, faker and codeforces data:
 #### Weather data
-![image](https://github.com/user-attachments/assets/c0901aa5-2729-4f16-a967-aa1f60e5999c)
+![image](https://github.com/user-attachments/assets/0913ad6c-c4ae-4d01-bb9d-2b3022c9f1e0)
 #### Faker data
 ![image](https://github.com/user-attachments/assets/3f1f07c8-b0f6-468f-906a-4ba2cb65833d)
 #### Codeforces data
@@ -118,11 +118,11 @@ In the weather data, we will retrieve the weather information at 2 cities: **Bos
 
 #### Weather Data Recorded By Location in Celcius
 
-![image](https://github.com/user-attachments/assets/1ea0e5be-acd5-42e9-b3e4-f34fab0a7499)
+![image](https://github.com/user-attachments/assets/415abd4f-1c0e-4762-8205-52a0fce0a9fe)
 
 From the above graph, we can see that:
-- **Boston**: The temperature remains consistently low, around 2°C throughout the time series, indicating colder conditions compared to New York.
-- **New York**: The temperature starts at around 10°C and gradually decreases over time. This indicates a cooling trend throughout the observation period.
+- **Amherst Center**: The temperature remains consistently low, around 3°C throughout the time series, indicating colder conditions compared to Boston.
+- **Boston**: The temperature starts at around 8°C and flutuates around 7-8°C before remaining steady at 8°C throughout the observation period.
 
 ### Codeforces Data
 
