@@ -103,11 +103,11 @@ codeforces = getCodeforcesDF() # Get the codeforces data
 
 Below are some examples of the weather, faker and codeforces data:
 #### Weather data
-![image](https://github.com/user-attachments/assets/0913ad6c-c4ae-4d01-bb9d-2b3022c9f1e0)
+![alt text](images/weather_data.png)
 #### Faker data
-![image](https://github.com/user-attachments/assets/3f1f07c8-b0f6-468f-906a-4ba2cb65833d)
+![alt text](images/faker_data.png)
 #### Codeforces data
-![image](https://github.com/user-attachments/assets/a626a572-bc9e-4c20-8b94-165eb4499214)
+![alt text](images/codeforces_data.png)
 
 ### Plot
 In this section, we will use **weather** and **codeforces** data for visualizations.
@@ -118,7 +118,7 @@ In the weather data, we will retrieve the weather information at 2 cities: **Bos
 
 #### Weather Data Recorded By Location in Celcius
 
-![image](https://github.com/user-attachments/assets/415abd4f-1c0e-4762-8205-52a0fce0a9fe)
+![alt text](images/weather_report.png)
 
 From the above graph, we can see that:
 - **Amherst Center**: The temperature remains consistently low, around 3°C throughout the time series, indicating colder conditions compared to Boston.
@@ -129,7 +129,7 @@ From the above graph, we can see that:
 In the Codefores data, we will retrieve a list of users who participate in at least one contests in Codeforces in the last month.
 
 #### Rating Distribution in Codeforces
-![image](https://github.com/user-attachments/assets/f6aaa82f-78ed-429a-9ef0-4c74f84d7b83)
+![alt text](images/codeforces_rating.png)
 
 The above graph illusatrate the distribution of the rating of the users in Codeforces. 
 
@@ -139,7 +139,7 @@ Looking at the above graph, we can see that the distribution is right-skewed, wi
 Beyond the rating **2000**, there is a common trend that when the ratings increase, the number of users decreases significantly, implying that higher ratings are achieved by a small fraction of participants. 
 
 #### Ranks Distribution in Codeforces
-![image](https://github.com/user-attachments/assets/e20361b9-8b5e-4339-976d-074dd34bdd71)
+![alt text](images/codeforces_rank.png)
 
 The above graph illusatrate the distribution of the ranks among Codeforces users. 
 Most of the users fall within the `newbie` rank, observing over 3000 particicipants. Moving to higher ranks, the number of users with corresponding ranks descrease significantly. In details, following `newbie`, the next 3 most common ranks are `pupil`, `specialist` and `expert`, achieving apporximately 600, 400 and 300, respectively. In higher ranks (`candidate master`, `master` and beyond), only a small fraction of users meet these requirements, which is less than 100. 
