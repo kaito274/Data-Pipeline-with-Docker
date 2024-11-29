@@ -114,7 +114,7 @@ In this section, we will use **weather** and **codeforces** data for visualizati
 
 ### Weather Data
 
-In the weather data, we will retrieve the weather information at 2 cities: **Boston** and **New York**.
+In the weather data, we will retrieve the weather information at 2 cities: **Boston** and **Amherst Center**.
 
 #### Weather Data Recorded By Location in Celcius
 
@@ -170,3 +170,7 @@ Data from the Codeforces platform can be accessed with the help of the Codeforce
 - Competitive programmers can use the Codeforces API to access contest information, user rating, ranks, and problem information.
   
 Therefore, by using the Codeforces API, individuals can customize their training process and focus on their weak areas to improve their competitive programming skills.
+
+## Video Documentation
+**Video Recording Link**: https://rmiteduau.sharepoint.com/:v:/s/Assignment2899/EUqr39cryQZBnAATnqy2dXwBl1rX0PCtg19dLQvG7GlVkA?nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJTdHJlYW1XZWJBcHAiLCJyZWZlcnJhbFZpZXciOiJTaGFyZURpYWxvZy1MaW5rIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXcifX0%3D&e=DXT4Eu
+
